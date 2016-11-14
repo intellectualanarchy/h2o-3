@@ -2569,15 +2569,16 @@ h2o.floor <- function(x) {
 }
 
 #'
-#' Return the sum of all the values present in its arguments.
+#' Compute the frame's sum by-column (or by-row).
 #'
 #' @name h2o.sum
 #' @param x An H2OFrame object.
 #' @param na.rm \code{logical}. indicating whether missing values should be removed.
+#' @param axis An int that indicates whether to do down a column (0) or across a row (1).
 #' @seealso \code{\link[base]{sum}} for the base R implementation.
 #' @export
-h2o.sum <- function(x,na.rm = FALSE) {
-  sum(x,na.rm = na.rm)
+h2o.sum <- function(x, na.rm = FALSE, axis = 0) {
+  .newExpr("sum", chk.H2OFrame(x), na.rm, axis)
 }
 
 #'
